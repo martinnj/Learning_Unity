@@ -2709,6 +2709,7 @@ GameObject:
   - 136: {fileID: 733998016}
   - 82: {fileID: 733998015}
   - 114: {fileID: 733998014}
+  - 114: {fileID: 733998017}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2849,6 +2850,24 @@ CapsuleCollider:
   m_Height: 1.20000005
   m_Direction: 1
   m_Center: {x: .200000003, y: .600000024, z: 0}
+--- !u!114 &733998017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 733998010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 544f2064df03e95419b4a5147c506b08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StartingHealth: 100
+  CurrentHealth: 0
+  HealthSlider: {fileID: 966651984}
+  DamageImage: {fileID: 1049372927}
+  DeathClip: {fileID: 8300000, guid: d36a393bca4582043982db9089e1694f, type: 3}
+  FlashSpeed: 5
+  FlashColour: {r: 1, g: 0, b: 0, a: .0862745121}
 --- !u!1 &743260455
 GameObject:
   m_ObjectHideFlags: 0
@@ -3250,7 +3269,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 966651985}
   m_FillRect: {fileID: 167155686}
   m_HandleRect: {fileID: 0}
   m_Direction: 0
@@ -3324,6 +3343,7 @@ GameObject:
   - 82: {fileID: 1003523132}
   - 195: {fileID: 1003523134}
   - 114: {fileID: 1003523135}
+  - 114: {fileID: 1003523136}
   m_Layer: 9
   m_Name: Zombunny
   m_TagString: Untagged
@@ -3490,6 +3510,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94f6618a0da65fa45b24d5105d5d8422, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1003523136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1003523127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e15099f5ee559584089d5851df572def, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TimeBetweenAttacks: .5
+  AttackDamage: 10
 --- !u!1 &1028029512
 GameObject:
   m_ObjectHideFlags: 0
@@ -5536,7 +5569,7 @@ MonoBehaviour:
   m_Script: {fileID: 1301386320, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Priority: -1
+  m_Priority: 3
   ignoreReversedGraphics: 1
   blockingObjects: 0
   m_BlockingMask:

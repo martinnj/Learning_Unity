@@ -3,68 +3,60 @@ using System.Collections;
 
 public class EnemyAttack : MonoBehaviour
 {
-    public float timeBetweenAttacks = 0.5f;
-    public int attackDamage = 10;
+    public float TimeBetweenAttacks = 0.5f;
+    public int AttackDamage = 10;
 
 
-    Animator anim;
-    GameObject player;
-    PlayerHealth playerHealth;
+    Animator _anim;
+    GameObject _player;
+    PlayerHealth _playerHealth;
     //EnemyHealth enemyHealth;
-    bool playerInRange;
-    float timer;
+    bool _playerInRange;
+    float _timer;
 
 
     void Awake ()
     {
-        player = GameObject.FindGameObjectWithTag ("Player");
-        playerHealth = player.GetComponent <PlayerHealth> ();
+        _player = GameObject.FindGameObjectWithTag ("Player");
+        _playerHealth = _player.GetComponent <PlayerHealth> ();
         //enemyHealth = GetComponent<EnemyHealth>();
-        anim = GetComponent <Animator> ();
+        _anim = GetComponent <Animator> ();
     }
 
 
     void OnTriggerEnter (Collider other)
     {
-        if(other.gameObject == player)
-        {
-            playerInRange = true;
-        }
+        if (other.gameObject != _player) return;
+        _playerInRange = true;
     }
 
 
     void OnTriggerExit (Collider other)
     {
-        if(other.gameObject == player)
-        {
-            playerInRange = false;
-        }
+        if (other.gameObject != _player) return;
+        _playerInRange = false;
     }
 
 
     void Update ()
     {
-        timer += Time.deltaTime;
+        _timer += Time.deltaTime;
 
-        if(timer >= timeBetweenAttacks && playerInRange/* && enemyHealth.currentHealth > 0*/)
+        if(_timer >= TimeBetweenAttacks && _playerInRange/* && enemyHealth.currentHealth > 0*/)
         {
             Attack ();
         }
 
-        if(playerHealth.currentHealth <= 0)
-        {
-            anim.SetTrigger ("PlayerDead");
-        }
+        if (_playerHealth.CurrentHealth > 0) return;
+        _anim.SetTrigger ("PlayerDead");
     }
 
 
     void Attack ()
     {
-        timer = 0f;
+        _timer = 0f;
 
-        if(playerHealth.currentHealth > 0)
-        {
-            playerHealth.TakeDamage (attackDamage);
-        }
+        if (_playerHealth.CurrentHealth <= 0) return;
+        _playerHealth.TakeDamage (AttackDamage);
     }
 }
