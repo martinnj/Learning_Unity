@@ -4,29 +4,29 @@ using System.Collections;
 public class EnemyMovement : MonoBehaviour
 {
     Transform _player;
-    //PlayerHealth playerHealth;
-    //EnemyHealth enemyHealth;
+    PlayerHealth _playerHealth;
+    EnemyHealth _enemyHealth;
     NavMeshAgent _nav;
 
 
     void Awake ()
     {
         _player = GameObject.FindGameObjectWithTag ("Player").transform;
-        //playerHealth = player.GetComponent <PlayerHealth> ();
-        //enemyHealth = GetComponent <EnemyHealth> ();
+        _playerHealth = _player.GetComponent <PlayerHealth> ();
+        _enemyHealth = GetComponent <EnemyHealth> ();
         _nav = GetComponent <NavMeshAgent> ();
     }
 
 
     void Update ()
     {
-        //if(enemyHealth.currentHealth > 0 && playerHealth.currentHealth > 0)
-        //{
+        if(_enemyHealth.CurrentHealth > 0 && _playerHealth.CurrentHealth > 0)
+        {
             _nav.SetDestination (_player.position);
-        //}
-        //else
-        //{
-        //    nav.enabled = false;
-        //}
+        }
+        else
+        {
+            _nav.enabled = false;
+        }
     }
 }

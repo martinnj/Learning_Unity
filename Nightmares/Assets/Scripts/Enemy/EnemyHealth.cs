@@ -2,54 +2,54 @@
 
 public class EnemyHealth : MonoBehaviour
 {
-    public int startingHealth = 100;
-    public int currentHealth;
-    public float sinkSpeed = 2.5f;
-    public int scoreValue = 10;
-    public AudioClip deathClip;
+    public int StartingHealth = 100;
+    public int CurrentHealth;
+    public float SinkSpeed = 2.5f;
+    public int ScoreValue = 10;
+    public AudioClip DeathClip;
 
 
-    Animator anim;
-    AudioSource enemyAudio;
-    ParticleSystem hitParticles;
-    CapsuleCollider capsuleCollider;
-    bool isDead;
-    bool isSinking;
+    Animator _anim;
+    AudioSource _enemyAudio;
+    ParticleSystem _hitParticles;
+    CapsuleCollider _capsuleCollider;
+    bool _isDead;
+    bool _isSinking;
 
 
     void Awake ()
     {
-        anim = GetComponent <Animator> ();
-        enemyAudio = GetComponent <AudioSource> ();
-        hitParticles = GetComponentInChildren <ParticleSystem> ();
-        capsuleCollider = GetComponent <CapsuleCollider> ();
+        _anim = GetComponent <Animator> ();
+        _enemyAudio = GetComponent <AudioSource> ();
+        _hitParticles = GetComponentInChildren <ParticleSystem> ();
+        _capsuleCollider = GetComponent <CapsuleCollider> ();
 
-        currentHealth = startingHealth;
+        CurrentHealth = StartingHealth;
     }
 
 
     void Update ()
     {
-        if(isSinking)
+        if(_isSinking)
         {
-            transform.Translate (-Vector3.up * sinkSpeed * Time.deltaTime);
+            transform.Translate (-Vector3.up * SinkSpeed * Time.deltaTime);
         }
     }
 
 
     public void TakeDamage (int amount, Vector3 hitPoint)
     {
-        if(isDead)
+        if(_isDead)
             return;
 
-        enemyAudio.Play ();
+        _enemyAudio.Play ();
 
-        currentHealth -= amount;
+        CurrentHealth -= amount;
             
-        hitParticles.transform.position = hitPoint;
-        hitParticles.Play();
+        _hitParticles.transform.position = hitPoint;
+        _hitParticles.Play();
 
-        if(currentHealth <= 0)
+        if(CurrentHealth <= 0)
         {
             Death ();
         }
@@ -58,14 +58,14 @@ public class EnemyHealth : MonoBehaviour
 
     void Death ()
     {
-        isDead = true;
+        _isDead = true;
 
-        capsuleCollider.isTrigger = true;
+        _capsuleCollider.isTrigger = true;
 
-        anim.SetTrigger ("Dead");
+        _anim.SetTrigger ("Dead");
 
-        enemyAudio.clip = deathClip;
-        enemyAudio.Play ();
+        _enemyAudio.clip = DeathClip;
+        _enemyAudio.Play ();
     }
 
 
@@ -73,7 +73,7 @@ public class EnemyHealth : MonoBehaviour
     {
         GetComponent <NavMeshAgent> ().enabled = false;
         GetComponent <Rigidbody> ().isKinematic = true;
-        isSinking = true;
+        _isSinking = true;
         //ScoreManager.score += scoreValue;
         Destroy (gameObject, 2f);
     }
