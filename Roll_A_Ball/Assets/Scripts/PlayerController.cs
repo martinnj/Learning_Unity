@@ -1,11 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
 
     public float Speed;
-    
+    public Text CountText;
+    public Text WinText;
+    private int _count;
+
+    // Called when object is created.
+    void Start()
+    {
+        _count = 0;
+       SetCountText();
+        WinText.text = "";
+    }
+
 	// Update is called once per frame
 	void FixedUpdate ()
     {
@@ -19,9 +31,18 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "PickUp")
+        if (other.gameObject.tag != "PickUp") return;
+        other.gameObject.SetActive(false);
+        _count++;
+        SetCountText();
+    }
+
+    void SetCountText()
+    {
+        CountText.text = "Count: " + _count;
+        if (_count >= 10)
         {
-            other.gameObject.SetActive(false);   
+            WinText.text = "You won! :D";
         }
     }
 }
