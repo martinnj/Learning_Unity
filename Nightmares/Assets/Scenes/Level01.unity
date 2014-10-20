@@ -2531,6 +2531,10 @@ Prefab:
       propertyPath: DamageImage
       value: 
       objectReference: {fileID: 1049372927}
+    - target: {fileID: 100002, guid: 513a6244c70bd9149bf126a95d4505e1, type: 2}
+      propertyPath: m_TagString
+      value: GunBarrelEnd
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 513a6244c70bd9149bf126a95d4505e1, type: 2}
   m_RootGameObject: {fileID: 733998010}
@@ -3261,7 +3265,7 @@ GameObject:
   - 114: {fileID: 1500620931}
   m_Layer: 0
   m_Name: GunBarrelEnd
-  m_TagString: Untagged
+  m_TagString: GunBarrelEnd
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5231,7 +5235,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 3
   m_audioClip: {fileID: 8300000, guid: 4fff99673a41e24439d527ad0bd6b569, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: .104000002
   m_Pitch: 1
   Loop: 1
@@ -5623,6 +5627,92 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 50, y: 3, z: 1}
   m_Center: {x: 0, y: -13.5, z: 0}
+--- !u!1 &2037420514
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 2037420519}
+  - 33: {fileID: 2037420518}
+  - 65: {fileID: 2037420517}
+  - 23: {fileID: 2037420516}
+  - 114: {fileID: 2037420515}
+  m_Layer: 0
+  m_Name: PowerUp_PlaceHolder
+  m_TagString: PowerUp
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2037420515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2037420514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c831368e1b99484084f3c0e1935d313, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ModifierValue: 6
+  PColor: {r: 0, g: 0, b: 0, a: 0}
+  LifeTime: 10
+  LastsFor: 5
+  PowerAffects: 1
+--- !u!23 &2037420516
+Renderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2037420514}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+--- !u!65 &2037420517
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2037420514}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &2037420518
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2037420514}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &2037420519
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2037420514}
+  m_LocalRotation: {x: .461939812, y: .191341728, z: .191341728, w: .844623208}
+  m_LocalPosition: {x: 3.5, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
 --- !u!1 &2046912193
 GameObject:
   m_ObjectHideFlags: 0
